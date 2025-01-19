@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Space Satellites</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color: #1a1a1a;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+h1, h2 {
+    margin: 0;
+    padding: 20px 0;
+}
+
+p {
+    font-size: 1.1em;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+  
+}
+
+.navbar .logo img {
+    height: 50px;
+   
+}
+
+.navbar .nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.navbar .nav-links li {
+    margin: 0 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar .nav-links a {
+    font-size: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.navbar .nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #3ee2ff;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.navbar .nav-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.navbar .nav-links a:hover {
+    color: #3ee2ff;
+}
+
+/* Home Section */
+.home-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-top: 250px;
+    color: #ffffff;
+   font-family: Arial, Helvetica, sans-serif;
+   background-color: #00000057;
+   border-radius: 20px;
+   padding-left: 20px;
+   padding-right: 20px;
+ 
+}
+
+.overlay h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+  
+}
+
+.overlay p {
+    font-size: 1.5em;
+}
+
+/* About Section */
+.about-section {
+    padding: 50px 20px;
+    background-image: linear-gradient(to right, #000000, #0010a331);
+    text-align: center;
+    margin-top: 30px;
+}
+
+.about-section h2 {
+    color: #3ee2ff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.about-section p {
+    margin: 20px 0;
+    line-height: 1.6;
+}
+
+/* Satellites Section */
+.satellites-section {
+    padding: 50px 20px;
+    background-image: linear-gradient(to right, #000000, #0010a331);
+    text-align: center;
+}
+
+.satellites-section h2 {
+    color: #3ee2ff;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card {
+   
+    width: 300px;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow:3px 3px 3px #3ee2ff;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    margin-top: 0;
+    color: #3ee2ff;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 50px 20px;
+    background-color: #333;
+    text-align: center;
+}
+
+.contact-section form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-section input, .contact-section textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+}
+
+.contact-section button {
+    width: 80%;
+    padding: 10px;
+    background-color: #3ee2ff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: white;
+}
+
+.contact-section button:hover {
+    background-color: #3ee2ff;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #222;
+    padding: 50px 20px;
+    text-align: center;
+    color: white;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.footer-info, .footer-links {
+    flex: 1;
+    margin: 20px;
+}
+
+.footer-info h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #3ee2ff;
+}
+
+.footer-info p {
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+.footer-links h4 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #3ee2ff;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    font-size: 1.1em;
+    color: #bbb;
+}
+
+.footer-links a:hover {
+    color: #3ee2ff;
+}
+
+.footer-bottom {
+    background-color: #111;
+    padding: 20px;
+    font-size: 1.1em;
+    color: #777;
+    margin-top: 20px;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+</style>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/isrologo.png" alt="Space Satellites Logo" >
+          
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#satellites">Satellites</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section with Video -->
+    <section id="home" class="home-section">
+        <video autoplay muted loop class="background-video">
+            <source src="videos/space.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay">
+            <h1>Welcome to <font color="#FFA500">Is</font><font color="#4B83FD">ro</font></h1>
+            <p style="margin-top: -20px;">Exploring the cosmos with modern technology</p></div></style>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <h2>About Space Satellites</h2>
+        <p>Space satellites have revolutionized the way we observe and explore our planet and beyond. From communication to weather forecasting, satellites are an integral part of modern life.</p>
+        <p>They play a crucial role in providing insights into Earth’s atmosphere, enabling real-time global communications, and supporting GPS navigation. Satellites are designed to operate in space for extended periods, often without the need for repair or maintenance.</p>
+        <p>Space exploration, scientific research, and environmental monitoring all depend on satellites to gather critical data, keeping us connected to the ever-expanding universe.</p>
+    </section>
+
+    <!-- Satellites Section with Cards -->
+    <section id="satellites" class="satellites-section">
+        <h2>Our Satellites</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="images/isro1.jfif" alt="Satellite 1">
+                <div class="card-content">
+                    <h3>Satellite One</h3>
+                    <p>A revolutionary satellite that aids in global communication, providing uninterrupted signal transmission across continents.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/isro2.jfif" alt="Satellite 2">
+                <div class="card-content">
+                    <h3>Satellite Two</h3>
+                    <p>This satellite specializes in monitoring Earth's atmosphere and weather patterns, helping scientists track climate change.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/isro3.jpg" alt="Satellite 3">
+                <div class="card-content">
+                    <h3>Satellite Three</h3>
+                    <p>Designed to provide high-speed internet connectivity to remote regions, ensuring no one is left behind in the digital age.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+        <p>For inquiries or more information, feel free to reach out to us. We would love to connect with fellow space enthusiasts, scientists, and industry leaders!</p>
+        <form>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-media">
+                <a href="#" class="social-icon">FB</a>
+                <a href="#" class="social-icon">TW</a>
+                <a href="#" class="social-icon">IG</a>
+                <a href="#" class="social-icon">LN</a>
+            </div>
+            <div class="footer-info">
+                <h3>Space Satellites</h3>
+                <p>Email: info@spacesatellites.com</p>
+                <p>Address: 123 Space Avenue, Satellite City, Cosmos</p>
+                <p>Phone: +1 234 567 890</p>
+                <p>Business Hours: Monday - Friday, 9 AM - 5 PM</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#satellites">Satellites</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Space Satellites. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
